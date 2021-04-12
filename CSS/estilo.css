@@ -9,7 +9,7 @@ body,
 
 body {
   background: url(../Imagens/Fundo.jpg);
-  background-color: #240046;
+  background-color: #ffffff;
   background-repeat: no-repeat;
 }
 
@@ -34,7 +34,7 @@ nav.navbar-transparente {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #7b2cbf;
+  color: #006d77;
 }
 
 .navbar-dark .navbar-toggler {
@@ -59,7 +59,7 @@ nav.navbar-transparente {
   color: white;
 }
 #quemsomos {
-  background: #7b2cbf;
+  background: #006d77;
 }
 
 #contquemsomos {
@@ -67,6 +67,3 @@ nav.navbar-transparente {
   padding-bottom: 3%;
 }
 
-#rodape {
-  background: #240046;
-}
