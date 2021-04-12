@@ -60,9 +60,21 @@ body {
   border-radius: 5px;
   border-color: none;
   border-color: #006d77;
+  font-family: 'AgencyFB';
+  background-color: #EDF6F9;
   
-}.botao {
-  margin-top: 2px;
+}
+
+.logo{
+
+  width: 100%;
+  max-height: 470px;
+
+}
+
+.botao {
+  margin-top: 7px;
+  margin-left: 15%;
   border-radius: 5px;
   width: 70%;
   color: #006d77;
@@ -71,9 +83,17 @@ body {
   font-family: 'AgencyFB';
   border: none;
 }
+.botao:hover{
+  
+  background-color: #83c5be;
+
+}
 
 .cadastrar{
   font-family: "AgencyFB";
   color: #83c5be;
+}
 
+.cadastrar:hover{
+  color: #EDF6F9;
 }
