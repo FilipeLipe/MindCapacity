@@ -7,8 +7,24 @@ html, body{
 }
 /* background */
 body {
-  background-color: #240046;
+  background-color: #83c5be;
 }
+
+@font-face {
+  font-family: Lilita One;
+  src: url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+}
+
+@font-face {
+  font-family: Mansalva;
+  src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+}
+
+@font-face {
+  font-family: AgencyFB;
+  src: url('../Fonte/AgencyFB.ttf');
+  }
+
 
 .form-signin {
   width: 100%;
@@ -16,7 +32,7 @@ body {
   padding: 15px;
   padding: 20px;
   margin: auto;
-  background-color: #63009c;
+  background-color: #006d77;
   border-radius: 15px;
 }
 
@@ -42,11 +58,22 @@ body {
 }
 .form-signin input {
   border-radius: 5px;
-  border-color: #63009c;
+  border-color: none;
+  border-color: #006d77;
   
 }.botao {
   margin-top: 2px;
   border-radius: 5px;
-  border-color: #63009c;
-  
+  width: 70%;
+  color: #006d77;
+  background-color: #EDF6F9;
+  border-color: #006d77;
+  font-family: 'AgencyFB';
+  border: none;
+}
+
+.cadastrar{
+  font-family: "AgencyFB";
+  color: #83c5be;
+
 }
