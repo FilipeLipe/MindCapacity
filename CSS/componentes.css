@@ -1,0 +1,69 @@
+@font-face {
+    font-family: Lilita One;
+    src: url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+  }
+  
+@font-face {
+    font-family: Mansalva;
+    src: url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+}
+  
+@font-face {
+    font-family: AgencyFB;
+    src: url('../Fonte/AgencyFB.ttf');
+}
+
+#nome{
+    font-size: 50px;
+    font-family: "AgencyFB";
+    color: #EDF6F9;
+}
+
+.lapis{
+    width: 60px;
+    height: 60px;
+}
+
+.form-signin {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 500px;
+    padding: 15px;
+    margin: auto;
+    background-color: #006d77;
+    border-radius: 15px;
+  }
+  
+.form-signin .form-control {
+  
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+.form-signin input {
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'AgencyFB';
+    background-color: #EDF6F9;
+  
+}
+
+.botao {
+    margin-top: 15px;
+    margin-left: 15%;
+    border-radius: 5px;
+    width: 70%;
+    color: #006d77;
+    background-color: #EDF6F9;
+    border: none;
+    font-family: 'AgencyFB';
+  }
+
+  .botao:hover{
+    background-color: #83c5be;
+  }
