@@ -1,3 +1,58 @@
 body {
   background: url(../Imagens/fundo-grad-branco.png);
 }
+
+#inicio{
+  height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  }
+
+.form-input .form-control-2{
+  display: flex;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #929292;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  width: 10cm;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.botao-2{
+  background: #006d77;
+  color: #EDF6F9;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+}
+
+#file{
+  display: flex;
+  flex-direction: row;
+
+}
+
+#inputDoc{
+  width: 9cm;
+}
+
+#add{
+  background: #006d77;
+  color: #EDF6F9;
+  font-weight: bold;
+  width: 1cm;
+  border: none;
+}
+
+#formulario{
+  height: auto;
+}

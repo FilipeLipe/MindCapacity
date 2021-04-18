@@ -63,47 +63,23 @@
     <!-- Fim do Cabecalho-->
 
     <!-- Inicio da seção Home -->
-    <section id="home" class="d-flex">
+    <section id="inicio" class="d-flex">
         <!--Inicio do Home-->
-        <div class="container-1 align-self-center">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <input type="text" id="inputTitle" class="form-control" placeholder="Título" required>
-                        &nbsp;
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            <p>Informações:</p>
-                            <textarea id="inputInfo" rows="5" cols="50"></textarea>
-                        &nbsp;
-                        </div>
-                        <div class="col-md-8">
-                            Link: <input type="text" id="url">
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            Arquivos: <input type="text" id="url"> <div id="box-3"><a href="#insert">+</a></div>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            <input type="date" id="data">
-                            <span class="validity"></span>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            <input type="time" id="hora">
-                            <span class="validity"></span>
-                        </div>
-                        <p> &nbsp; </p>
-                        <p> &nbsp; </p>
-                        <div class="col-md-12">
-                            <div id="box-2">
-                                <a href="#salvar">Salvar</a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row" id="formulario">
+            <div class="form-input text-center">
+                <input type="text" id="inputTitle" class="form-control-2" placeholder="Título" required>
+                <textarea id="inputInfo" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" ></textarea>
+                <input type="text" id="inputURL" class="form-control-2" placeholder="Link">
+                <div id="file">
+                    <input type="text" id="inputDoc" class="form-control-2" placeholder="Arquivo"> 
+                    <input type="button" id="add" value="+">
                 </div>
-                </div>
+                <input type="date" id="data" class="form-control-2">
+                <span class="validity"></span>
+                <input type="time" id="hora" class="form-control-2">
+                <span class="validity"></span>
+                <p>&nbsp;</p>
+                <button type="submit" formaction="" class="botao-2"> Salvar </button>
             </div>
         </div>
     </section>
