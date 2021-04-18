@@ -1,3 +1,17 @@
+/* Layout */
+
+html,
+body,
+#home {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-repeat: no-repeat;
+}
+
+
 @font-face {
     font-family: Lilita One;
     src: url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
@@ -11,6 +25,31 @@
 @font-face {
     font-family: AgencyFB;
     src: url('../Fonte/AgencyFB.ttf');
+}
+
+/* Barra de navegacao */
+nav.navbar-transparente {
+  padding: 15px, 0px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #EDF6F9;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #83c5be;
+}
+
+.navbar-dark .navbar-toggler {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.divisor {
+  margin: 10px 10px;
+  width: 1px;
+  background: #EDF6F9;
 }
 
 #nome{
@@ -67,3 +106,84 @@
   .botao:hover{
     background-color: #83c5be;
   }
+
+/* Home */
+.capa {
+  text-align: center;
+}
+/* Fontes adicionais*/
+
+#p1 {
+  font-family: "Mansalva", cursive;
+  line-height: 52px;
+  color: white;
+}
+
+.container-1{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: auto;
+}
+
+#box {
+  width: 300px;
+  height: 20px;
+  background-color: #83c5be;
+  border-radius: 10px;
+  position: relative;
+
+  min-height: 3em;
+  display: inline-block;
+  vertical-align: middle;
+  
+  font-family: Verdana;
+  text-align: auto;
+  font-weight: bold;
+  color: #EDF6F9;
+}
+
+#box-2 {
+  width: 150px;
+  height: 50px;
+  background-color: #006d77;
+  border-radius: 10px;
+
+  min-height: 3em;
+  display: inline-block;
+  vertical-align: middle;
+
+  font-family: Verdana;
+  text-align: auto;
+  font-weight: bold;
+  color: #EDF6F9;
+}
+
+#box-3 {
+  width: 30px;
+  height: 25px;
+  background-color: #006d77;
+  border-radius: 10px;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  font-family: Verdana;
+  text-align: auto;
+  font-weight: bold;
+  color: #EDF6F9;
+}
+
+a:link{
+  color: #EDF6F9;
+  text-decoration: none;
+}
+
+a:hover{
+  color:#163235;
+  text-decoration: none;
+}
