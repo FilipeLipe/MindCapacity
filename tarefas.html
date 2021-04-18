@@ -15,15 +15,15 @@
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Estilo Costumizado -->
 
-    <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
     <link rel="stylesheet" type="text/css" href="CSS/componentes.css">
+    <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
     <title>MindCapacity</title>
     <link rel="icon" href="Imagens/Icones/Logo.ico">
 
 </head>
 
 <body>
-    <!--Cabecalho-->
+    <!-- Inicio do Cabecalho-->
     <header>
         <nav class="navbar navbar-expand-md navbar-dark  navbar-transparente ">
             <div class="container">
@@ -40,44 +40,70 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                         <li class="nav-item">
-                            <a class="nav-link " href="inicio.html" id="home"><font color="#83c5be">Início</font></a>
+                            <a class="nav-link " href="inicio.html" id="home">
+                                <font color="#83c5be">Início</font>
+                            </a>
                         </li>
-                        <li class="nav-item divisor "></li>
+                        <a class="nav-link " href="perfil.html">Perfil</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link " href="index.html">Sair</a>
+                        </li>
+                        <li class="nav-item divisor ">
+                        </li>
+                        <li class="nav-item">
+                            <img src="Imagens/Boneco.svg" width=50 height=50 href="#perfil.html"></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+    <!-- Fim do Cabecalho-->
 
-
-
-    <!-- Seção Perfil -->
-    <section id="Perfil" class="d-flex">
-
-        <div class="container align-self-center">
-          <div class="row d-flex justify-content-center">
-            <img class="logo" src="./Imagens/Boneco.svg" height="300" >
-          </div>
-          <div class="row d-flex justify-content-center">
-            <a id="nome"> JOAO</a>
-            <img class="lapis" src="./Imagens/Icones/Lapis.png" height="350" >
-          </div>
-          <div class="row d-flex justify-content-center">
-            <form class="form-signin text-center shadow">
-              
-              <input type="password" id="inputPasswordN" class="form-control" placeholder="Nova Senha" required>
-              <input type="password" id="inputCPasswordN" class="form-control" placeholder="Confirmar Nova Senha" required>
-              
-              <button type="submit" class="btn btn-lg btn-primary btn-block botao"> Salvar</button>
-              <button type="button" class="btn btn-lg btn-primary btn-block botao"> Limpar Horários</button>
-            </form>
+    <!-- Inicio da seção Home -->
+    <section id="home">
+        <!--Inicio do Home-->
+        <div class="container-1 align-self-center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="box-et">
+                               <a href="#eventos">Eventos</a>
+                            </div>
+                            <div id="box-et">
+                                <a href="#tarefas">Tarefas</a>
+                             </div>
+                        </div>
+                        <p> &nbsp; </p>
+                        <div class="col-md-12">
+                            <div id="box">
+                                <a href="#newTarefa">Criar Tarefa</a>
+                            </div>
+                        </div>
+                        <p> &nbsp; </p>
+                        <div class="col-md-12">
+                            <table border="2px" cellpadding="5px" id="tabela">
+                                <tr> 
+                                    <td>TÍTULO</td>
+                                    <td>DATA</td>
+                                    <td>LINK</td>
+                                    <td>ARQUIVOS</td>
+                                    <td>STATUS</td>
+                                </tr>
+                                <tr> 
+                                    <td>Aula</td>
+                                    <td><input type="date" id="data">
+                                        <span class="validity"></span></td>
+                                    <td><a href="https://www.moodlepresencial.ufop.br/login/index.php">moodlepresencial.ufop.br</a></td>
+                                    <td></td>
+                                    <td><input type="checkbox" id="status"></td>
+                                </tr>
+                            </table> 
+                        </div>
+                    </div>
         </div>
-        <p>&nbsp;</p>
-
-      </section>
+    </section>
+    <!-- Fim da seção Home-->
   
 
     <!-- JavaScript (Opcional) -->
