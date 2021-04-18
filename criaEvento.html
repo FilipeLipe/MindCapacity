@@ -63,58 +63,41 @@
     <!-- Fim do Cabecalho-->
 
     <!-- Inicio da seção Home -->
-    <section id="home" class="d-flex">
+    <section id="inicio" class="d-flex">
         <!--Inicio do Home-->
-        <div class="container-1 align-self-center">
-                    <div class="row">
-                        <div class="col-md-4">
-                           <input type="text" id="inputTitle" class="form-control" placeholder="Título" required>
-                           &nbsp;
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            <textarea id="inputInfo" rows="5" cols="50" placeholder="Informações"></textarea>
-                        &nbsp;
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            <input type="date" id="data">
-                            <span class="validity"></span>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                            <input type="time" id="hora">
-                            <span class="validity"></span>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-8">
-                           <p>Repetir: </p>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Domingo</label>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Segunda</label>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Terça</label>
-                           <br>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Quarta</label>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Quinta</label>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Sexta</label>
-                           <input type="checkbox" id="inputSeg">
-                           <label for="inputSeg">Sábado</label>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-12">
-                            <div id="box-2">
-                                <a href="#salvar">Salvar</a>
-                            </div>
-                        </div>
+        <div class="row" id="formulario">
+            <div class="form-input text-center">
+                <input type="text" id="inputTitle" class="form-control-2" placeholder="Título" required>
+                <textarea id="inputInfo" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" ></textarea>
+                <input type="date" id="data" class="form-control-2">
+                <span class="validity"></span>
+                <input type="time" id="hora" class="form-control-2">
+                <span class="validity"></span>
+                <div class="row" id="center">
+                    <div class="col-md-8">
+                        <br>
+                        <center><p>Repetir: </p>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Domingo</label>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Segunda</label>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Terça</label>
+                       <br>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Quarta</label>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Quinta</label>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Sexta</label>
+                       <input type="checkbox" id="inputSeg">
+                       <label for="inputSeg">Sábado</label>
+                       <br>&nbsp;
+                    </center>
                     </div>
-                </div>
-                </div>
+                <button type="submit" formaction="" class="botao-2"> Salvar </button>
             </div>
+        </div>
         </div>
     </section>
     <!-- Fim da seção Home-->
