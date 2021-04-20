@@ -77,6 +77,11 @@
                                 <a href="tarefas" style="color: #EDF6F9">Leitura</a>
                             </div>
                         </div>
+                        <ul>
+                            <% results.forEach(function(r) { %>
+                                <li><%= r.titulo %> - <%= r.descricao %></li>
+                            <% }); %>
+                        </ul>
                         <p> &nbsp; </p>
                         <div class="col-md-12">
                             <div id="box">
