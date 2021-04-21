@@ -1,5 +1,9 @@
 const express = require('express')
+const bcrypt = require('bcrypt')
 const path = require('path')
+const session = require('express-session')
+const flash = require('express-flash')
+const passport = require('passport')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -53,7 +57,6 @@ express()
 
   .get('/index', async (req, res) => {
     try {
-      const name = 'Filipe';
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM USUARIOS');
       const results = { 'results': (result) ? result.rows : null};
@@ -70,56 +73,20 @@ express()
     req.flash("success_msg","você foi desconectado");
     res.redirect("/index");
   })*/
-  
-  app.post('/inscreva-se', async(req,res)=>{
-      let name:string = req.body.name;
-      let email:string = req.body.email;
-      let password = req.body.password;
-      let password2 = req.body.password2;
-      let errors =[];
-      if(!email||!password||!password2){
-        errors.push({message:'Preencha todos os campos!'});
-      }
-      if(password!=password2){
-        errors.push({message:'As senhas não conferem'});
-      }
-      if(errors.length >0){
-        res.render("pages/inscreva-se",{errors});
-      }else{
-        //validação dos campos de login sucedida
-        let hashedPassword = await bcrypt.hash(password,10);
-        const client = await pool.connect();//conecta com o banco
-        client.query(//Verifica se existe algum usuario no banco com o mesmo email digitado
-          `SELECT * FROM usuarios
-          WHERE email=$1`,
-          [email],
-          (err,results)=>{
-            if(err){
-              throw err;
-            }
-            if(results.rows.length>0){
-              errors.push({message: "email já registrado"});
-              res.render("pages/inscreva-se",{errors});
-            }else{
-              pool.query(//usuario valido insere no banco de dados
-                `INSERT INTO usuarios (nome_usuario,email,senha)
-                VALUES ($1,$2,$3)
-                RETURNING id,senha`,
-                [name,email,hashedPassword],
-                (err,results)=>{
-                  if(err){
-                    throw err;
-                  }
-                  //se o cadastro der certo redireciona pra pagina de login com a mensagem
-                  client.release();
-                  req.flash('success_msg',name+ " você está registrado, por favor faça login")
-                  res.redirect("/login");
-                }
-              )
-            }
-          }
-        )
-      }
-  })
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+/*express().post('/inscreva-se', async(req,res)=>{
+    let name:string = req.body.name;
+    let email:string = req.body.email;
+    let password = req.body.password;
+    let password2 = req.body.password2;
+    
+    const client = await pool.connect();//conecta com o banco
+    pool.query(//usuario valido insere no banco de dados
+    `INSERT INTO usuarios (nome_usuario,email,senha)
+    VALUES ($1,$2,$3)
+    RETURNING id,senha`,
+    [name,email,password])
+    
+})*/
