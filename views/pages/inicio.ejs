@@ -67,32 +67,11 @@
         <div class="container-1 align-self-center">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="box">
-                               <a href="tarefas" style="color: #EDF6F9">Faculdade</a>
-                            </div>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-12">
-                            <div id="box">
-                                <a href="tarefas" style="color: #EDF6F9">Leitura</a>
-                            </div>
-                        </div>
-                        <ul>
                             <% results.forEach(function(r) { %>
-                                <li><%= r.titulo %> - <%= r.descricao %></li>
+                                <div id="box">
+                                    <a href="tarefas" style="color: #EDF6F9"><%= r.nome_h %></a>
+                                 </div>
                             <% }); %>
-                        </ul>
-                        <p> &nbsp; </p>
-                        <div class="col-md-12">
-                            <div id="box">
-                                <a href="tarefas" style="color: #EDF6F9">Visão</a>
-                            </div>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-12">
-                            <div id="box-2">
-                                <a href="criaHorario" style="color: #EDF6F9">Novo Horário</a>
-                            </div>
                         </div>
                     </div>
         </div>

@@ -134,7 +134,7 @@ nav.navbar-transparente {
   background-color: #83c5be;
   border-radius: 10px;
   position: relative;
-  margin: auto;
+  margin-top: 10px;
 
   min-height: 3em;
   display: flex;
