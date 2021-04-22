@@ -33,18 +33,24 @@
       </div>
     
       <div class="row d-flex justify-content-center">
-        <form class="form-signin text-center shadow">
+        <form class="form-signin text-center shadow" action="/inscreva-se" method="POST">
 
-          <input type="text" name="name" class="form-control" placeholder="Nome" required autofocus>
+          <ul style="list-style: none;" class="form-control error">
+            <% if(typeof errors != "undefined"){ %>
+              <% errors.forEach(error=>{ %>
+                <li><%= error.message %></li>
+              <% }) %>
+            <% } %>
+          </ul>
+          <input type="text" name="nome" class="form-control" placeholder="Nome" required autofocus>
           
-          <input type="email" name="email" class="form-control" placeholder="Email" required>
+          <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
 
-          <input type="password" name="password" class="form-control" placeholder="Senha" required>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
 
-          <input type="password" nome="password2" class="form-control" placeholder="Confirmar Senha" required>
+          <input type="password" name="password2" class="form-control" placeholder="Confirmar Senha" required>
           
-          <button type="submit" formaction="index" class="btn btn-lg btn-primary btn-block botao"> Cadastrar</button>
-          
+          <button type="submit" class="btn btn-lg btn-primary btn-block botao" value="Cadastrar"> Cadastrar</button>
           
         </form>
     </div>
@@ -53,4 +59,5 @@
   <!-- Fim da seção login-->
   
     
-</body></html>
+</body>
+</html>

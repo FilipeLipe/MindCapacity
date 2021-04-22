@@ -55,3 +55,9 @@ body {
 .cadastrar:hover{
   color: #EDF6F9;
 }
+
+.error{
+  background-color: #EDF6F9;
+  color: #006d77;
+  font-family: "AgencyFB";
+}

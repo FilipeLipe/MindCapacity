@@ -6,6 +6,7 @@ const flash = require('express-flash')
 const passport = require('passport')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
+const app = express();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgres://crhoytxefjakrm:12d2681bacc9a91ca1a739602394426f5f302a84ec3d37c540bb26884c91743c@ec2-3-234-85-177.compute-1.amazonaws.com:5432/d1frlrcnih6i81',
   ssl: {
@@ -13,22 +14,23 @@ const pool = new Pool({
   }
 });
 
+  app.use(express.urlencoded({ extended: false}));
+  app.use(express.static(path.join(__dirname, 'public')))
+  
+  
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  //.get('/index', (req, res) => res.render('pages/index'))
-  //.get('/inicio', (req, res) => res.render('pages/inicio'))
-  .get('/inscreva-se', (req, res) => res.render('pages/inscreva-se'))
-  .get('/criaTarefa', (req, res) => res.render('pages/criaTarefa'))
-  .get('/criaEvento', (req, res) => res.render('pages/criaEvento'))
-  .get('/criaHorario', (req, res) => res.render('pages/criaHorario'))
-  .get('/eventos', (req, res) => res.render('pages/eventos'))
-  .get('/perfil', (req, res) => res.render('pages/perfil'))
-  .get('/tarefas', (req, res) => res.render('pages/tarefas'))
-  .get('/db', async (req, res) => {
+  app.set('views', path.join(__dirname, 'views'))
+  app.set('view engine', 'ejs')
+  app.get('/', (req, res) => res.render('pages/index'))
+  //app.get('/index', (req, res) => res.render('pages/index'))
+  //app.get('/inicio', (req, res) => res.render('pages/inicio'))
+  app.get('/criaTarefa', (req, res) => res.render('pages/criaTarefa'))
+  app.get('/criaEvento', (req, res) => res.render('pages/criaEvento'))
+  app.get('/criaHorario', (req, res) => res.render('pages/criaHorario'))
+  app.get('/eventos', (req, res) => res.render('pages/eventos'))
+  app.get('/perfil', (req, res) => res.render('pages/perfil'))
+  app.get('/tarefas', (req, res) => res.render('pages/tarefas'))
+  app.get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM tarefas');
@@ -40,8 +42,8 @@ express()
       res.send("Error " + err);
     }
   })
-
-  .get('/inicio', async (req, res) => {
+  
+  app.get('/inicio', async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM horarios where users = \'Filipe\'');
@@ -54,8 +56,8 @@ express()
       res.send("Error " + err);
     }
   })
-
-  .get('/index', async (req, res) => {
+  
+  app.get('/index', async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM USUARIOS');
@@ -67,26 +69,60 @@ express()
       res.send("Error " + err);
     }
   })
-
+  
   /*app.get('/logout',(req,res)=>{
     req.logOut();
     req.flash("success_msg","você foi desconectado");
     res.redirect("/index");
   })*/
+  
+  app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  
+  app.get('/inscreva-se', (req, res) => res.render('pages/inscreva-se'))
 
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  app.post('/inscreva-se', async(req,res)=>{
 
-/*express().post('/inscreva-se', async(req,res)=>{
-    let name:string = req.body.name;
-    let email:string = req.body.email;
-    let password = req.body.password;
-    let password2 = req.body.password2;
-    
+   
+    let errors =[];
+    const {nome,email,password,password2} = req.body;//pega os componentes do body por desestruturação
+    if(!email||!password||!password2){
+      errors.push({message:'Preencha todos os campos!'});
+    }
+    if(password!=password2){
+      errors.push({message:'As senhas não conferem'});
+    }
+    if(errors.length>0){
+      res.render('pages/inscreva-se',{errors});
+    }else{
     const client = await pool.connect();//conecta com o banco
-    pool.query(//usuario valido insere no banco de dados
-    `INSERT INTO usuarios (nome_usuario,email,senha)
-    VALUES ($1,$2,$3)
-    RETURNING id,senha`,
-    [name,email,password])
-    
-})*/
+    pool.query(`SELECT * from usuarios WHERE nome_usuario=$1`,[nome],(err,results)=>{
+      if(err){
+        throw err;
+      }else{
+        
+        if(results.rows.length>0){
+          errors.push({message: nome + " já está registrado !!"});
+          console.log(errors)
+            res.render('pages/inscreva-se',{errors});
+          
+        }else{
+          pool.query(
+            `INSERT INTO usuarios 
+            VALUES ($1,$2,$3)`,
+            [nome,password,email],
+            (err,results)=>{
+              if(err){
+                throw err;
+              }else{
+                client.release();
+                return res.redirect('/');
+              }
+            }
+          )
+        }
+      }
+      
+    })
+    }
+  })
+
