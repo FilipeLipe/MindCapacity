@@ -17,6 +17,8 @@ let user=null;
   app.use(express.urlencoded({ extended: false}));
   app.use(express.static(path.join(__dirname, 'public')))
   
+  let numeroHorario;
+  
   
 
   app.set('views', path.join(__dirname, 'views'))
@@ -236,4 +238,21 @@ let user=null;
                   }
                 );//conecta com o banco
 
+            });
+
+            app.post("/criaHorario",async(req,res)=>{
+                const {titulo,descricao} = req.body;
+                console.log(titulo,descricao)
+                const client = await pool.connect();
+                numeroHorario = await client.query("select max(cod_h) from horarios");
+                
+                const a =  (numeroHorario) ? numeroHorario.rows[0] : null;
+                const max= a.max;
+                console.log(max);
+                client.query(`INSERT INTO horarios
+                Values ($1,$2,$3,$4,$5)`,[parseInt(max)+1,titulo,descricao,"segunda",user.nome_usuario]);
+                
+                client.release();
+                
+                res.redirect("/inicio");
             })

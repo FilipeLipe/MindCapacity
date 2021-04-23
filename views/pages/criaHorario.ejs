@@ -65,31 +65,14 @@
         <!--Inicio do Home-->
         <div class="row" id="formulario">
             <div class="form-input text-center">
-                <input type="text" id="inputTitle" class="form-control-2" placeholder="Título" required>
-                <textarea id="inputInfo" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" ></textarea>
-                <div class="row" id="center">
-                    <div class="col-md-8">
-                        <br>
-                        <center><p>Repetir: </p>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Domingo</label>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Segunda</label>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Terça</label>
-                       <br>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Quarta</label>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Quinta</label>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Sexta</label>
-                       <input type="checkbox" id="inputSeg">
-                       <label for="inputSeg">Sábado</label>
-                       <br>&nbsp;
-                    </center>
-                    </div>
-                <button type="submit" formaction="" class="botao-2"> Salvar </button>
+                <form class="text-center shadow" action="/criaHorario" method="POST">
+                
+                    <input type="text" id="inputTitle" name="titulo" class="form-control-2" placeholder="Título" required>
+                
+                    <textarea id="inputInfo" name="descricao" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" ></textarea>
+                
+                    <button type="submit" formaction="" class="botao-2"> Salvar </button>
+
             </div>
         </div>
                     

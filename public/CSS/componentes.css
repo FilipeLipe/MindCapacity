@@ -249,3 +249,15 @@ a:hover{
   color:#163235;
   text-decoration: none;
 }
+
+.botao2{
+  margin-top: 15px;
+  margin-left: 15%;
+  max-height: 10px;
+  border-radius: 5px;
+  width: 70%;
+  color: #006d77;
+  background-color: #EDF6F9;
+  border: none;
+  font-family: 'AgencyFB';
+}
