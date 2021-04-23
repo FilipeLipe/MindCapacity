@@ -33,17 +33,26 @@
       </div>
     
       <div class="row d-flex justify-content-center">
-        <form class="form-signin text-center shadow" action="/">
-
-          <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+        <form class="form-signin text-center shadow" action="/" method="POST">
+          <ul style="list-style: none;" class="form-control error">
+            <% if(typeof errors != "undefined"){ %>
+              <% errors.forEach(error=>{ %>
+                <li><%= error.message %></li>
+              <% }) %>
+            <% } %>
+          </ul>
+          <input type="email" name="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
           
-          <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
           
-          <button type="submit" formaction="inicio" class="btn btn-lg btn-primary btn-block botao"> Login</button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block botao"> Login</button>
           
           <a class="nav-link cadastrar" href="inscreva-se">Cadastrar</font></a>
           
         </form>
+
+        <button type="button" class="btn btn-lg btn-primary btn-block botao"> Login</button>
+
     </div>
 
   </section>
