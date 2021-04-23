@@ -68,16 +68,16 @@
                     <div class="btn-te">
                         <div class="col-md-8" id="btn">
                             <div id="box-et">
-                               <a href="eventos">Eventos</a>
+                               <a href="eventos?num=<%= num %>">Eventos</a>
                             </div>
                             <div id="box-et">
-                                <a href="tarefas">Tarefas</a>
+                                <a href="tarefas?num=<%= num %>">Tarefas</a>
                              </div>
                         </div>
                         <p> &nbsp; </p>
                         <div class="col-md-12">
                             <div id="box">
-                                <a href="criaEvento">Criar Evento</a>
+                                <a href="criaEvento?num=<%= num %>">Criar Evento</a>
                             </div>
                         </div>
                         <p> &nbsp; </p>
@@ -87,18 +87,18 @@
                                 <tr > 
                                     <td>TÍTULO</td>
                                     <td>DATA</td>
-                                    <td>LINK</td>
-                                    <td>ARQUIVOS</td>
+                                    <td>HORAS</td>
                                     <td>STATUS</td>
                                 </tr>
-                                <tr> 
-                                    <td>Aula</td>
-                                    <td><input type="date" id="data">
-                                        <span class="validity"></span></td>
-                                    <td><a href="https://www.moodlepresencial.ufop.br/login/index.php" color="#006d77">teste</a></td>
-                                    <td></td>
-                                    <td><input type="checkbox" id="status"></td>
-                                </tr>
+                                <% results.forEach(function(r) { %>
+                                    <tr> 
+                                        <td><%= r.nome_e %></td>
+                                        <td><%= r.dias %></td>
+                                        <td><%= r.horas %></td>
+                                        <td><input type="checkbox" id="status"></td>
+                                    </tr>
+                                <% }); %>
+
                             </table> 
                         </div>
                     </div>

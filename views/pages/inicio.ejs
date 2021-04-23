@@ -69,7 +69,7 @@
                         <div class="col-md-12">
                             <% results.forEach(function(r) { %>
                                 <div id="box">
-                                    <a href="tarefas" style="color: #EDF6F9"><%= r.nome_h %></a>
+                                    <a href="tarefas?num=<%= r.cod_h %>" style="color: #EDF6F9"><%= r.nome_h %></a>
                                  </div>
                             <% }); %>
                         </div>

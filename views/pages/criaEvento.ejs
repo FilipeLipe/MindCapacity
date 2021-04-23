@@ -67,13 +67,14 @@
         <!--Inicio do Home-->
         <div class="row" id="formulario">
             <div class="form-input text-center">
-                <input type="text" id="inputTitle" class="form-control-2" placeholder="Título" required>
-                <textarea id="inputInfo" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" ></textarea>
-                <input type="date" id="data" class="form-control-2">
-                <span class="validity"></span>
-                <input type="time" id="hora" class="form-control-2">
-                <span class="validity"></span>
-                <div class="row" id="center">
+                <form class="text-center shadow" action="/criaEvento" method="POST">
+                <input type="text" name="nome_e" id="inputTitle" class="form-control-2" placeholder="Título" required>
+               
+                <input type="date" name="dias" id="data" class="form-control-2">
+                
+                <input type="time" name="horas" id="hora" class="form-control-2">
+          
+                <!--<div class="row" id="center">
                     <div class="col-md-8">
                         <br>
                         <center><p>Repetir: </p>
@@ -94,11 +95,14 @@
                        <label for="inputSeg">Sábado</label>
                        <br>&nbsp;
                     </center>
-                    </div>
+                </div>
+                -->
                 <button type="submit" formaction="" class="botao-2"> Salvar </button>
+            </form>
             </div>
         </div>
         </div>
+        
     </section>
     <!-- Fim da seção Home-->
   

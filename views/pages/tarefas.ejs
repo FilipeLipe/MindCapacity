@@ -68,16 +68,16 @@
                     <div class="btn-te">
                         <div class="col-md-6" id="btn">
                             <div id="box-et">
-                               <a href="eventos">Eventos</a>
+                               <a href="eventos?num=<%= num %>">Eventos</a>
                             </div>
                             <div id="box-et">
-                                <a href="tarefas">Tarefas</a>
+                                <a href="tarefas?num=<%= num %>">Tarefas</a>
                              </div>
                         </div>
                         <p> &nbsp; </p>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div id="box">
-                                <a href="criaTarefa">Criar Tarefa</a>
+                                <a href="criaTarefa?num=<%= num %>">Criar Tarefa <%= num %></a>
                             </div>
                         </div>
                         <p> &nbsp; </p>
@@ -87,19 +87,26 @@
                             <table border="2px" cellpadding="5px" id="tabela">
                                 <tr> 
                                     <td>TÍTULO</td>
+                                    <td>DESCRIÇÂO</td>
                                     <td>DATA</td>
+                                    <td>HORA</td>
                                     <td>LINK</td>
                                     <td>ARQUIVOS</td>
                                     <td>STATUS</td>
                                 </tr>
-                                <tr> 
-                                    <td>Aula</td>
-                                    <td><input type="date" id="data">
-                                        <span class="validity"></span></td>
-                                    <td><a href="https://www.moodlepresencial.ufop.br/login/index.php">moodlepresencial.ufop.br</a></td>
-                                    <td></td>
-                                    <td><input type="checkbox" id="status"></td>
-                                </tr>
+                                <% results.forEach(function(r) { %>
+                                    <tr> 
+                                        <td><%= r.titulo %></td>
+                                        <td><%= r.descricao %></td>
+                                        <td><%= r.dia %></td>
+                                        <td><%= r.hora %></td>
+                                        <td><%= r.links %></td>
+                                        <td><%= r.arquivos %></td>
+                                        <td><input type="checkbox" id="status"></td>
+                                    </tr>
+                                <% }); %>
+    
+
                             </table> 
                         </div>
                     </div>

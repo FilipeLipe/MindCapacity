@@ -13,7 +13,7 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-
+const user;
   app.use(express.urlencoded({ extended: false}));
   app.use(express.static(path.join(__dirname, 'public')))
   
@@ -22,33 +22,40 @@ const pool = new Pool({
   app.set('views', path.join(__dirname, 'views'))
   app.set('view engine', 'ejs')
   app.get('/', (req, res) => res.render('pages/index'))
-  //app.get('/index', (req, res) => res.render('pages/index'))
   //app.get('/inicio', (req, res) => res.render('pages/inicio'))
-  app.get('/criaTarefa', (req, res) => res.render('pages/criaTarefa'))
   app.get('/criaEvento', (req, res) => res.render('pages/criaEvento'))
+  app.get('/criaTarefa', (req, res) => res.render('pages/criaTarefa'))
   app.get('/criaHorario', (req, res) => res.render('pages/criaHorario'))
-  app.get('/eventos', (req, res) => res.render('pages/eventos'))
+  //app.get('/eventos', (req, res) => res.render('pages/eventos'))
   app.get('/perfil', (req, res) => res.render('pages/perfil'))
-  app.get('/tarefas', (req, res) => res.render('pages/tarefas'))
-  app.get('/db', async (req, res) => {
+  //app.get('/tarefas', (req, res) => res.render('pages/tarefas'))
+  
+  /*app.post('/', async (req, res) => {
     try {
+      
+      const {nome,email,password,password2} = req.body;//pega os componentes do body por desestruturação
+      if(!email||!password||!password2){
+        errors.push({message:'Preencha todos os campos!'});
+      }
+      
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM tarefas');
+      const result = await client.query('SELECT * FROM usuarios');
       const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
+      //console.log(results);
+      res.render('pages/inicio', results );
       client.release();
     } catch (err) {
       console.error(err);
       res.send("Error " + err);
     }
-  })
+  })*/
   
   app.get('/inicio', async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM horarios where users = \'Filipe\'');
       const results = { 'results': (result) ? result.rows : null};
-      console.log(results);
+      //console.log(results);
       res.render('pages/inicio', results );
       client.release();
     } catch (err) {
@@ -57,72 +64,161 @@ const pool = new Pool({
     }
   })
   
-  app.get('/index', async (req, res) => {
+  app.get('/tarefas', async (req, res) => {
     try {
+      
+      const {num}  = req.query;
+      console.log(typeof(num));
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM USUARIOS');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('pages/db', results );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-  })
-  
-  /*app.get('/logout',(req,res)=>{
-    req.logOut();
-    req.flash("success_msg","você foi desconectado");
-    res.redirect("/index");
-  })*/
-  
-  app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
-  
-  app.get('/inscreva-se', (req, res) => res.render('pages/inscreva-se'))
-
-  app.post('/inscreva-se', async(req,res)=>{
-
-   
-    let errors =[];
-    const {nome,email,password,password2} = req.body;//pega os componentes do body por desestruturação
-    if(!email||!password||!password2){
-      errors.push({message:'Preencha todos os campos!'});
-    }
-    if(password!=password2){
-      errors.push({message:'As senhas não conferem'});
-    }
-    if(errors.length>0){
-      res.render('pages/inscreva-se',{errors});
-    }else{
-    const client = await pool.connect();//conecta com o banco
-    pool.query(`SELECT * from usuarios WHERE nome_usuario=$1`,[nome],(err,results)=>{
-      if(err){
-        throw err;
-      }else{
+      const result = await client.query(
+        `SELECT * FROM tarefas 
+        where cod_h = $1`, 
+        [parseInt(num)],
+        (err,result)=>{
+          if(err){
+            throw err;
+          }else{
+            const results =  (result) ? result.rows : null;
+            client.release();
+            res.render('pages/tarefas', {"results":results,"num":num} );
+          }
+        })
         
-        if(results.rows.length>0){
-          errors.push({message: nome + " já está registrado !!"});
-          console.log(errors)
-            res.render('pages/inscreva-se',{errors});
+        
+      } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+      }
+    })
+    app.post('/criaEvento', async(req,res)=>{
+        
+        
+      let errors =[];
+      const {nome_e,dias,horas} = req.body;//pega os componentes do body por desestruturação
+      const client = await pool.connect();//conecta com o banco
+      console.log(nome_e,dias,horas)
+      const {num} = req.query;
+      console.log(num,typeof(num));
+      pool.connect();
+      pool.query(
+        `INSERT INTO eventos 
+        VALUES ($1,$2,$3,$4)`,
+        [nome_e,dias,horas,parseInt(num)],
+        (err,results)=>{
+          if(err){
+            throw err;
+          }else{
+            client.release();
+            return res.redirect('/inicio');
+          }
+        }
+        )
+      })
+    app.get('/eventos', async (req, res) => {
+      try {
+        
+        const {num}  = req.query;
+        const client = await pool.connect();
+        const result = await client.query(
+          `SELECT * FROM eventos 
+          where codigo_h = $1`, 
+          [parseInt(num)],
+          (err,result)=>{
+            if(err){
+              throw err;
+            }else{
+              const results =  (result) ? result.rows : null;
+              client.release();
+              res.render('pages/eventos', {"results":results,"num":num} );
+            }
+          })
           
-        }else{
-          pool.query(
-            `INSERT INTO usuarios 
-            VALUES ($1,$2,$3)`,
-            [nome,password,email],
-            (err,results)=>{
-              if(err){
-                throw err;
-              }else{
-                client.release();
-                return res.redirect('/');
+          
+        } catch (err) {
+          console.error(err);
+          res.send("Error " + err);
+        }
+      })
+      
+      
+      app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+      
+      app.get('/inscreva-se', (req, res) => res.render('pages/inscreva-se'))
+      
+    
+    app.post('/inscreva-se', async(req,res)=>{
+      
+      
+      let errors =[];
+      const {nome,email,password,password2} = req.body;//pega os componentes do body por desestruturação
+      if(!email||!password||!password2){
+        errors.push({message:'Preencha todos os campos!'});
+      }
+      if(password!=password2){
+        errors.push({message:'As senhas não conferem'});
+      }
+      if(errors.length>0){
+        res.render('pages/inscreva-se',{errors});
+      }else{
+        const client = await pool.connect();//conecta com o banco
+        pool.query(`SELECT * from usuarios WHERE nome_usuario=$1`,[nome],(err,results)=>{
+          if(err){
+            throw err;
+          }else{
+            
+            if(results.rows.length>0){
+              errors.push({message: nome + " já está registrado !!"});
+              console.log(errors)
+              res.render('pages/inscreva-se',{errors});
+              
+            }else{
+              pool.query(
+                `INSERT INTO usuarios 
+                VALUES ($1,$2,$3)`,
+                [nome,password,email],
+                (err,results)=>{
+                  if(err){
+                    throw err;
+                  }else{
+                    client.release();
+                    return res.redirect('/');
+                  }
+                }
+                )
               }
             }
-          )
+            
+          })
         }
-      }
+      })
       
-    })
-    }
-  })
+      app.get('/criaTarefa', (req, res) => res.render('pages/criaTarefa'))
+      
+      app.post('/criaTarefa', async(req,res)=>{
+        
+        
+        let errors =[];
+        const {titulo,descricao,arquivos,links,dia,hora} = req.body;//pega os componentes do body por desestruturação
+        const client = await pool.connect();//conecta com o banco
+        console.log(titulo,descricao,arquivos,links,dia,hora)
+        const {num} = req.query;
+        console.log(num,typeof(num));
+        pool.connect();
+        pool.query(
+          `INSERT INTO tarefas 
+          VALUES ($1,$2,1,$3,$4,$5,$6)`,
+          [titulo,descricao,links,dia,hora,parseInt(num)],
+          (err,results)=>{
+            if(err){
+              throw err;
+            }else{
+              client.release();
+              return res.redirect('/inicio');
+            }
+          }
+          )
+        })
+        
+        app.get('/index', (req, res) => res.render('pages/index'))
 
+        app.post('/index',(req,res)=> res.render('pages/index'))
