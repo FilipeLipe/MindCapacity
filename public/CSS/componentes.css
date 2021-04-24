@@ -129,7 +129,7 @@ nav.navbar-transparente {
 }
 
 #box {
-  width: 300px;
+  width: 50%;
   height: 20px;
   background-color: #83c5be;
   border-radius: 10px;
@@ -196,25 +196,6 @@ nav.navbar-transparente {
   color: #EDF6F9;
 }
 
-table#tabela tr td{
-  background: #EDF6F9;
- 
-  font-family: Verdana;
-  font-weight: bold;
-  color: #006d77;
-}
-
-#tabela-teste{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#tabela-teste1{
-  display: flex;
-  flex-direction: column;
-}
-
 .btn-te{
   display: flex;
   flex-direction: column;
@@ -240,24 +221,172 @@ table#tabela tr td{
   flex-direction: column;
 }
 
-a:link{
-  color: #EDF6F9;
+a{
+  color: #006d77;
   text-decoration: none;
 }
 
 a:hover{
-  color:#163235;
+  color:#EDF6F9;
+}
+
+
+
+/*Classes dos Horarios da pagina inicial*/
+.horarios{
+  width: 500%;
+  height: 20px;
+  background-color: #83c5be;
+  border-radius: 5px;
+  min-height: 50px;
+  margin-top: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: "AgencyFB";
+  font-size: 30px;
+  color: #EDF6F9;
+}
+
+.horarioLetra{
+  color: #EDF6F9;
   text-decoration: none;
 }
 
-.botao2{
-  margin-top: 15px;
-  margin-left: 15%;
-  max-height: 10px;
-  border-radius: 5px;
-  width: 70%;
-  color: #006d77;
+
+
+
+/*Botão Cria Horario da pagina Inicial*/
+.criaH{
   background-color: #EDF6F9;
-  border: none;
-  font-family: 'AgencyFB';
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  
+}
+.criaH:hover{
+  background-color: #006d77;
+}
+
+.letracriaH{
+  font-size: 40px;
+  font-family: "AgencyFB";
+  color: #006d77;
+}
+
+.letracriaH:hover{
+  color: #83c5be;
+}
+
+
+
+
+/*Centraliza texto*/
+.CentralizarDiv{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+a:link{
+  text-decoration: none;
+}
+
+
+
+
+/*Botao que pode escolher no Evento e Tarefas*/
+.TeEBotao{
+  background-color: #83c5be;
+  border-radius: 10px;
+  color: #EDF6F9;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.TeE{
+  font-size: 40px;
+  font-family: "AgencyFB";
+  color: #006d77;
+}
+
+.TeE:hover{
+  color: #EDF6F9;
+}
+
+
+
+
+/*Botão Escolhido na pagina Eventos e Tarefas*/
+#escolhaTeE{
+  background-color: #006d77;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#letraTeE{
+  font-size: 40px;
+  font-family: "AgencyFB";
+  color: #EDF6F9;
+  text-align: center;
+}
+
+
+
+/*Botão de Cria Evento e Tarefas*/
+.criaTE{
+  background-color: #83c5be;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  
+}
+.criaTE:hover{
+  background-color: #006d77;
+}
+
+.letracriaTE{
+  font-size: 40px;
+  font-family: "AgencyFB";
+  color: #006d77;
+}
+
+.letracriaTE:hover{
+  color: #83c5be;
+}
+
+
+
+
+/*Tabela Evento e Tarefas*/
+#tabela{
+  background-color: #EDF6F9;
+  font-family: "AgencyFB";
+  font-weight: bold;
+  color: #006d77;
+  margin-top: 10px;
+  border: 1px;
+  text-align: center;
+}
+
+.tabela-cabecalho{
+  background-color: #006d77;
+  color: #EDF6F9;
+  text-align: center;
+}
+
+
+
+
+/*Deixa DIV com borda vermelha*/
+.VERIFICAR{
+
+  border-style: solid;
+  border-color: red;
 }

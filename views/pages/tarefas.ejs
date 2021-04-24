@@ -62,58 +62,51 @@
     <!-- Fim do Cabecalho-->
 
     <!-- Inicio da seção Home -->
-    <section id="home">
+    <section id="home" class="d-flex">
         <!--Inicio do Home-->
-        <div class="container-1 align-self-center">
-                    <div class="btn-te">
-                        <div class="col-md-6" id="btn">
-                            <div id="box-et">
-                               <a href="eventos?num=<%= num %>">Eventos</a>
-                            </div>
-                            <div id="box-et">
-                                <a href="tarefas?num=<%= num %>">Tarefas</a>
-                             </div>
-                        </div>
-                        <p> &nbsp; </p>
-                        <div class="col-md-6">
-                            <div id="box">
-                                <a href="criaTarefa?num=<%= num %>">Criar Tarefa</a>
-                            </div>
-                        </div>
-                        <p> &nbsp; </p>
-                    
-                    <div class="tabela-teste1">
-                        <div id="tabela-teste">
-                            <table border="2px" cellpadding="5px" id="tabela">
-                                <tr> 
-                                    <td>TÍTULO</td>
-                                    <td>DESCRIÇÂO</td>
-                                    <td>DATA</td>
-                                    <td>HORA</td>
-                                    <td>LINK</td>
-                                    <td>ARQUIVOS</td>
-                                    <td>STATUS</td>
-                                </tr>
-                                <% results.forEach(function(r) { %>
-                                    <tr> 
-                                        <td><%= r.titulo %></td>
-                                        <td><%= r.descricao %></td>
-                                        <td><%= r.dia %></td>
-                                        <td><%= r.hora %></td>
-                                        <td><%= r.links %></td>
-                                        <td><%= r.arquivos %></td>
-                                        <td><input type="checkbox" id="status"></td>
-                                    </tr>
-                                <% }); %>
+        <div class="container align-self-center">
     
+            <div class="row justify-content-center">
+                <div class="col-3 TeEBotao">
+                    <a class="TeE CentralizarDiv" href="eventos?num=<%= num %>">Eventos</a>
+                </div>
+                <div id="escolhaTeE" class="col-3">
+                    <a id="letraTeE" class="CentralizarDiv" href="tarefas?num=<%= num %>">Tarefas</a>
+                </div>
+            </div>
+        
+            <div class="row d-flex justify-content-center">
+                <div class="criaTE col-5">
+                    <a class="letracriaTE CentralizarDiv" href="criaTarefa?num=<%= num %>">Criar Tarefa</a>
+                </div>
+            </div>
 
-                            </table> 
-                        </div>
-                    </div>
+            <div class="row d-flex justify-content-center">
+                <table cellpadding="10px" id="tabela">
+                    <tr class="tabela-cabecalho"> 
+                        <td>TÍTULO</td>
+                        <td>DESCRIÇÂO</td>
+                        <td>DATA</td>
+                        <td>HORA</td>
+                        <td>LINK</td>
+                        <td>ARQUIVOS</td>
+                        <td>STATUS</td>
+                    </tr>
+                    <% results.forEach(function(r) { %>
+                        <tr> 
+                            <td><%= r.titulo %></td>
+                            <td><%= r.descricao %></td>
+                            <td><%= r.dia %></td>
+                            <td><%= r.hora %></td>
+                            <td><%= r.links %></td>
+                            <td><%= r.arquivos %></td>
+                            <td><input type="checkbox" id="status"></td>
+                        </tr>
+                    <% }); %>
+                </table> 
+            </div>
         </div>
     </section>
-    <!-- Fim da seção Home-->
-  
 
     <!-- JavaScript (Opcional) -->
     <!--jQuery primeiro, depois Popper.js, depois Bootstrap JS-->
