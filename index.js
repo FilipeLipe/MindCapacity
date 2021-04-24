@@ -180,16 +180,16 @@ let user=null;
             
             
             let errors =[];
-            const {titulo,descricao,arquivos,links,dia,hora} = req.body;//pega os componentes do body por desestruturação
+            const {titulo,descricao,arquivos,links,dia,hora,file} = req.body;//pega os componentes do body por desestruturação
             const client = await pool.connect();//conecta com o banco
-            console.log(titulo,descricao,arquivos,links,dia,hora)
+            console.log(titulo,descricao,arquivos,links,dia,hora,file)
             const {num} = req.query;
             console.log(num,typeof(num));
             pool.connect();
             pool.query(
               `INSERT INTO tarefas 
-              VALUES ($1,$2,1,$3,$4,$5,$6)`,
-              [titulo,descricao,links,dia,hora,parseInt(num)],
+              VALUES ($1,$2,$3,$4,$5,$6,$7)`,
+              [titulo,descricao,links,dia,hora,parseInt(num),file],
               (err,results)=>{
                 if(err){
                   throw err;

@@ -70,20 +70,19 @@
                 
                 <form class="text-center shadow" action="/criaTarefa" method="POST">
             
-                    <input type="text" name="titulo" id="inputTitle" class="form-control-2" placeholder="Título" required>
+                    <input type="text" name="titulo" id="inputTitle" class="form-control-2" placeholder="Título" required autofocus>
                     
-                    <textarea name="descricao" id="inputInfo" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" ></textarea>
+                    <textarea name="descricao" id="inputInfo" class="form-control-2" rows="5" cols="5" width="20" placeholder="Informações" required></textarea>
                     
                     <input type="text" name="links" id="inputURL" class="form-control-2" placeholder="Link">
                     
                     <div id="file">
-                        <input name="arquivos" type="text" id="inputDoc" class="form-control-2" placeholder="Arquivo"> 
-                        <input type="button" id="add" value="+">
+                        <input name="file" type="file" id="inputDoc" class="form-control-2" placeholder="Arquivo"> 
                     </div>
                     
-                    <input type="date" name="dia" id="data" class="form-control-2">
+                    <input type="date" name="dia" id="data" class="form-control-2" required>
                     
-                    <input type="time" name="hora" id="hora" class="form-control-2">
+                    <input type="time" name="hora" id="hora" class="form-control-2" required>
                     
                     <button type="submit" formaction="" class="botao-2"> Salvar </button>
 
